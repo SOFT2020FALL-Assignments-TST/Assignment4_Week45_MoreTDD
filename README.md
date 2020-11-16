@@ -3,18 +3,34 @@
 
 ### Mockito powerups
 **How do you verify that a mock was called?**  
-Text  
+@Mock SmsService smsSvc;  
+String recipient = "+4511223344";  
+when(smsSvc.sendSms(recipient.startWith("+45").thenReturn(true)));
+**verify**(smsSvc.sendSms).sendSms(true);
 
 **How do you verify that a mock was NOT called?**  
-Text  
+@Mock SmsService smsSvc;  
+verify(smsSvc.**never()**).sendSms(true);
 
 **How do you specify how many times a mock should have been called?**  
-Text  
+@Mock SmsService smsSvc;  
+verify(smsSvc.**times(n)**).sendSms(true);
 
 **How do you verify that a mock was called with specific arguments?**  
-Text  
+@Mock SmsService smsSvc;  
+String recipient = "+4511223344";  
+when(smsSvc.sendSms(**eq("+4511223344)**.thenReturn(true)));
+verify(smsSvc.sendSms).sendSms(true);
 
 **How do you use a predicate to verify the properties of the arguments
 given to a call to the mock?**  
-Text  
+@Mock SmsService smsSvc;  
+String recipient = "+4511223344";  
+when(smsSvc.sendSms(**anyString()**.thenReturn(true)));  
+verify(smsSvc.sendSms).sendSms(true);
+***
+### Coverage
 
+### PITest
+
+### Static Analysis
